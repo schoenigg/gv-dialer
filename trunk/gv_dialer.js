@@ -1876,7 +1876,7 @@ var gvDialer = new (function(){
 		
 		moreMenu_blur: function(msgID){
 			return function(){
-				//$(this).find('.goog-menu.gc-message-menu').empty().hide();
+				$(this).find('.goog-menu.gc-message-menu').empty().hide();
 			};
 		},
 		
