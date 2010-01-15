@@ -1,0 +1,20 @@
+{
+  "name": "Google Voice Dialer",
+  "version": "1.1.4",
+  "description": "A dialer and inbox reader for Google Voice.",
+  "background_page": "background.html",
+  "browser_action": {
+	"default_title": "Google Voice Dialer",
+    "default_icon": "images/gv_logged_in.png",
+    "popup": "popup.html"
+  },
+  "icons": { "16": "images/icon16.png",
+           "32": "images/icon32.png",
+           "48": "images/icon48.png",
+          "128": "images/icon128.png" },
+  "permissions": [
+	"tabs",
+	"http://*.google.com/",
+	"https://*.google.com/"
+  ]
+}

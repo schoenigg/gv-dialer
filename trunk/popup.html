@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+        <title>Google Voice Dialer</title>
+        <link href="gv_dialer.css" rel="stylesheet" type="text/css">
+        <link href="goog_styles.css" rel="stylesheet" type="text/css">
+		<link href="scrollbars.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="lib/jquery-1.3.2.min.js"></script>
+        <script type="text/javascript" src="gv_dialer.js"></script>
+		<script type="text/javascript">$(gvDialer.init);</script>
+    </head>
+    <body>
+    	<div class="main" style="display: table; height: 100%;">
+    		<div style="display: table-row;">
+    			<div style="display: table-cell;">
+    				<div class="main-caption">
+    					<div class="caption-button caption-button-reload" title="Reload the user data (phones & contacts)"></div>
+		        		<div class="caption-box">
+							<div class="caption-button caption-button-popout"></div>
+		        			<div class="caption-button caption-button-close"></div>
+							<div class="clear:both;"></div>
+						</div>
+						<div class="header">
+							<div class="label label-status" title="Go to Google Voice">Connecting...</div>
+							<div class="image-gv-logo"></div>
+						</div>
+					</div>
+    			</div>
+    		</div>
+    		<div style="display: table-row;">
+    			<div style="display: table-cell; padding: 0px 5px;">
+    				<div class="toolbar">
+    					<div class="toggle-menu toggle-show">
+    						<div class="toggle-menu-img"></div>
+    						<div class="toggle-menu-content">Show Menu</div>
+    					</div>
+						<div class="toolbar-items">
+							<span class="toolbar-item-call toolbar-item-start" tabindex="0">
+								<span class="toolbar-item-image image-call"></span>
+								<span class="toolbar-item-label">Call</span>
+							</span><span class="toolbar-item-sms toolbar-item-end" tabindex="0">
+								<span class="toolbar-item-image image-sms"></span>
+								<span class="toolbar-item-label">SMS</span>
+							</span>
+							<div class="toolbar-item-more toolbar-item-end" style="display: none;" tabindex="0">
+								<div class="toolbar-item-label">&#9660;</div>
+							</div>
+						</div>
+					</div>
+					<div class="panels-holder" style="display: none;">
+						<div class="panel-call">
+							<div class="label label-hint">
+								Make a call for free (in the US)
+							</div>
+							<div class="label label-title">
+								Call
+							</div>
+							<div class="dropdown ac_contacts">
+								<input id="outgoingNumber" type="text" autocomplete="off"  tabindex="0">
+								<div class="dd-list contacts" style="display: none;"></div>
+							</div>
+							<div class="label label-comment">
+								Enter a number
+							</div>
+							<div class="label label-title">
+								Phone to ring
+							</div>
+							<div id="forwardNumber" class="dropdown" tabindex="0">
+								<div style="position: relative;">
+	                            	<div class="dropdown-text"></div><div class="dropdown-arrow" >&#9660;</div>
+								</div>
+	                            <div class="dd-list" style="display: none;"></div>
+	                        </div>
+							<div class="chkPanel">
+								<input type="checkbox" id="chkRemember" tabindex="0">
+								<label for="chkRemember">
+									Remember my choice
+								</label>
+							</div>
+							<div>
+								<div class="button-call-connect" tabindex="0">Connect</div>
+								<div class="button-call-cancel" style="display: none;" tabindex="0">Cancel</div>
+								<div class="quickcall-msg" style="display:none;"></div>
+							</div>
+						</div>
+						<div class="panel-sms">
+							<div class="label label-hint">
+								Send an SMS for free
+							</div>
+							<div class="label label-title">
+								To
+							</div>
+							<div class="dropdown ac_contacts">
+								<input id="phoneNumber" type="text" autocomplete="off" tabindex="0">
+								<div class="dd-list contacts" style="display: none;"></div>
+							</div>
+							<div class="label label-comment">
+								Enter a number
+							</div>
+							<div class="label label-title">
+								Message
+								<div class="quicksms-counter">160</div>
+							</div>
+							<textarea id="text" rows="3" cols="2" tabindex="0"></textarea>
+							<div>
+								<div class="button-sms-send" tabindex="0">Send</div>
+								<div class="quicksms-msg" style="display: none;"></div>
+							</div>
+						</div>
+					</div>
+    			</div>
+    		</div>
+    		<div style="display: table-row; width: 100%; height: 100%;">
+				<div style="display: table-cell; padding: 5px 5px 5px;">
+					<div style="height: 100%; position:relative;">
+						<div class="inbox-holder">
+							<div style="display: table; width: 100%; height: 100%;">
+									<div style="display: table-row; width: 100%; height: 100%;">
+										<div style="display: table-cell;">
+											<div class="inbox-border" style="display: table; width: 100%; height: 100%;">
+												<div style="display: table-row;">
+									    			<div style="display: table-cell;">
+									    				<div class="inbox-menu-holder">
+															<div class="all-unread-switch">
+																Show:
+																<span class="toolbar-item-inbox-all toolbar-item-start" tabindex="0">
+																	<span class="toolbar-item-label">All</span>
+																</span><span class="toolbar-item-inbox-unread toolbar-item-end" tabindex="0">
+																	<span class="toolbar-item-label">Unread</span>
+																</span>
+															</div>
+															<div class="inbox-refresh" tabindex="0">Refresh</div><div class="inbox-refresh-image"></div>
+															<div class="inbox-paging">
+																<span class="inbox-page-newest" title="Newest page" tabindex="0">&#171;</span>
+																<span class="inbox-page-newer" title="Previous page" tabindex="0">&#8249;</span>
+																<span>
+																	<span class="inbox-page-range">0-0</span>
+																	 of 
+																	<span class="inbox-page-total">0</span>
+																</span>
+																<span class="inbox-page-older" title="Next page" tabindex="0">&#8250;</span>
+																<span class="inbox-page-oldest" title="Oldest page" tabindex="0">&#187;</span>
+															</div>
+															<div style="clear: both;"></div>
+														</div>
+									    			</div>
+									    		</div>
+									    		<div style="display: table-row; height: 100%;">
+									    			<div style="display: table-cell; height: 100%; vertical-align: top;">
+														<div class="inner-inbox-holder">
+															<div class="inbox-loading">
+																<div class="image-inbox-loading"></div>
+																Loading
+															</div>
+														</div>
+									    			</div>
+								    			</div>
+											</div>
+										</div>
+									</div>
+							</div>
+						</div>
+	    				<div class="nav-menu">
+	    					<div style="padding: 15px 0px 0px 35px;">
+								<div class="nav-menuitem-contacts" title="Open Contacts view in Google Voice">Contacts</div>
+	    					</div>
+							<div style="padding: 10px 0px 0px 5px;">
+								<div>
+									<div class="nav-menuitem nav-menuitem-inbox nav-menuitem-selected">
+										<div class="nav-menuitem-img"></div><div class="nav-menuitem-content">Inbox</div>
+									</div>
+									<div class="nav-menuitem nav-menuitem-starred">
+										<div class="nav-menuitem-img"></div><div class="nav-menuitem-content">Starred</div>
+									</div>
+									<div class="nav-menuitem nav-menuitem-history">
+										<div class="nav-menuitem-img"></div><div class="nav-menuitem-content">History</div>
+									</div>
+									<div class="nav-menuitem nav-menuitem-spam">
+										<div class="nav-menuitem-img"></div><div class="nav-menuitem-content">Spam</div>
+									</div>
+									<div class="nav-menuitem nav-menuitem-trash">
+										<div class="nav-menuitem-img"></div><div class="nav-menuitem-content">Trash</div>
+									</div>
+								</div>
+							</div>
+							<div class="nav-separator"></div>
+							<div style="padding: 5px 0px 0px 5px;">
+								<div>
+									<div class="nav-menuitem nav-menuitem-voicemail">
+										<div class="nav-menuitem-img"></div><div class="nav-menuitem-content">Voicemail</div>
+									</div>
+									<div class="nav-menuitem nav-menuitem-sms">
+										<div class="nav-menuitem-img"></div><div class="nav-menuitem-content">SMS</div>
+									</div>
+									<div class="nav-menuitem nav-menuitem-recorded">
+										<div class="nav-menuitem-img"></div><div class="nav-menuitem-content">Recorded</div>
+									</div>
+									<div class="nav-menuitem nav-menuitem-placed">
+										<div class="nav-menuitem-img"></div><div class="nav-menuitem-content">Placed</div>
+									</div>
+									<div class="nav-menuitem nav-menuitem-received">
+										<div class="nav-menuitem-img"></div><div class="nav-menuitem-content">Received</div>
+									</div>
+									<div class="nav-menuitem nav-menuitem-missed">
+										<div class="nav-menuitem-img"></div><div class="nav-menuitem-content">Missed</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+    		</div>
+		</div>
+    </body>
+</html>
+
