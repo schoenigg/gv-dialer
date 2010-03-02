@@ -133,7 +133,7 @@ var gvChecker = new (function(){
 						
 						if (result) {
 							try {
-								var data = JSON.parse(result[1]);
+								var data = JSON.parse(result[1].replace(/'/g, '"'));
 								
 								if (data) {
 									if (onSuccess) {
