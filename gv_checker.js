@@ -129,7 +129,7 @@ var gvChecker = new (function(){
 			success: function(response){
 				if (response) {
 					try {
-						var result = response.match(/var gcData = (\{(?:.|\r|\n)*\});/);
+						var result = response.match(/var _gcData = (\{(?:.|\r|\n)*\});/);
 						
 						if (result) {
 							try {
